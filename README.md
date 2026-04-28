@@ -107,6 +107,10 @@ Validates a card number.
 }
 ```
 
+### `GET /api/v1/health`
+
+Returns `{ "status": "ok", "timestamp": "..." }`.  Used for uptime monitoring.
+
 **HTTP Status Codes**
 
 | Status | Meaning                                                                |
@@ -115,10 +119,6 @@ Validates a card number.
 | `400`  | Malformed request (missing or wrong-type `cardNumber`).                |
 | `404`  | Unknown endpoint.                                                      |
 | `500`  | Unexpected server error.                                               |
-
-### `GET /api/v1/health`
-
-Returns `{ "status": "ok", "timestamp": "..." }`. Useful for uptime monitoring.
 
 ---
 
