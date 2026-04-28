@@ -1,0 +1,52 @@
+{
+  "name": "card-validator-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "ts-node --respawn --transpile-only src/server.ts",
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "card-validation",
+    "luhn",
+    "express",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "description": "Card number validator REST API built with Express and TypeScript",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/express": "^5.0.2",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.3",
+    "@types/supertest": "^6.0.3",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "eslint": "^10.2.1",
+    "globals": "^17.5.0",
+    "jest": "^29.7.0",
+    "jiti": "^2.6.1",
+    "supertest": "^7.1.0",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.59.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/test"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ]
+  }
+}
