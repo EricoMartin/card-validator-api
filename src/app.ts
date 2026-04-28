@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(errorHandler);
 app.use("/api/v1/cards", cardRoutes);
 
-app.get("/health", (req, res) => {
+app.get("/api/v1/health", (req, res) => {
   res.status(200).json({ status: "OK" });
 });
 
