@@ -44,6 +44,13 @@ To run tests, use:
 npm test
 ```
 
+## Building for Production
+
+```bash
+npm run build   # compiles TypeScript to dist/
+npm start       # runs the compiled output
+```
+
 #### Request Body
 
 ```json
