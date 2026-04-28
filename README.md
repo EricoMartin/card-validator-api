@@ -8,12 +8,6 @@ A REST API that validates payment card numbers using the Luhn algorithm, built w
 - **Structured Responses**: Always returns a JSON response with a `success` field for easy client handling.
 - **Error Handling**: Gracefully handles invalid input without conflating it with validation results.
 
-## Endpoints
-
-### POST `/api/v1/cards/validate`
-
-Validates a card number.
-
 ## Setup and Running
 
 1. Clone the repository:
@@ -50,6 +44,12 @@ npm test
 npm run build   # compiles TypeScript to dist/
 npm start       # runs the compiled output
 ```
+
+## Endpoints
+
+### POST `/api/v1/cards/validate`
+
+Validates a card number.
 
 #### Request Body
 
