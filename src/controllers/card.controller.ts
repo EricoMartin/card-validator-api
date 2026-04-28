@@ -1,8 +1,6 @@
-import { Router, Request, Response } from "express";
+import { Request, Response } from "express";
 import { validateCard } from "../services/card.service";
 import type { ValidateCardResponse } from "../types/card.types";
-
-const router = Router();
 
 /**
  * POST /api/v1/cards/validate
@@ -65,5 +63,3 @@ export const validateCardEndpoint = (req: Request, res: Response): void => {
   // making it harder for clients to distinguish input errors from results.
   res.status(200).json(response);
 };
-
-export default router;
