@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import { validateCard } from "./card.service";
-import type { ValidateCardResponse } from "./card.types";
+import { validateCard } from "../services/card.service";
+import type { ValidateCardResponse } from "../types/card.types";
 
 const router = Router();
 
@@ -17,7 +17,7 @@ const router = Router();
  * - The response always has `success: boolean` at the top level so clients
  *   can branch on a single field without inspecting HTTP status codes alone.
  */
-router.post("/validate", (req: Request, res: Response): void => {
+export const validateCardEndpoint = (req: Request, res: Response): void => {
   const body = req.body as Record<string, unknown>;
 
   // Guard: body must exist and contain cardNumber
@@ -64,6 +64,6 @@ router.post("/validate", (req: Request, res: Response): void => {
   // A 400 here would conflate "bad request" with "card failed validation",
   // making it harder for clients to distinguish input errors from results.
   res.status(200).json(response);
-});
+};
 
 export default router;
