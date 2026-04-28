@@ -8,7 +8,7 @@ A REST API that validates payment card numbers using the Luhn algorithm, built w
 - **Error Handling**: Gracefully handles invalid input without conflating it with validation results.
 
 ## Endpoints
-### POST /api/v1/cards/validate
+### POST `/api/v1/cards/validate`
 Validates a card number.
 
 ## Setup and Running
@@ -95,7 +95,7 @@ npm test
 | `404`  | Unknown endpoint. |
 | `500`  | Unexpected server error. |
 
-### `GET /health`
+### `GET /api/v1/health`
 
 Returns `{ "status": "ok", "timestamp": "..." }`. Useful for uptime monitoring.
 
