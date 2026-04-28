@@ -12,21 +12,25 @@
  * Note: Card type matching is informational — an unrecognised network
  * does not make a card invalid (new BIN ranges are issued regularly).
  */
-import { isValidLuhn } from "../utils/luhn";
-import { detectCardType } from "../utils/detect";
-import { CardValidationResult } from "../utils/validate";
+import { isValidLuhn } from '../utils/luhn';
+import { detectCardType } from '../utils/detect';
+import { CardValidationResult } from '../utils/validate';
+
+const SANITIZE_PATTERN = /[\s-]/g;
+const DIGIT_ONLY_PATTERN = /^\d+$/;
 
 export function validateCard(rawInput: string): CardValidationResult {
-  const sanitized = rawInput.replace(/[\s-]/g, "");
+  const sanitized = rawInput.replace(SANITIZE_PATTERN, '');
 
   // Guard: only digits after sanitisation
-  if (!/^\d+$/.test(sanitized)) {
+  if (!DIGIT_ONLY_PATTERN.test(sanitized)) {
     return {
       valid: false,
       cardType: null,
       sanitizedNumber: sanitized,
       digitCount: sanitized.length,
-      message: "Card number must contain only digits (spaces and dashes are allowed as separators).",
+      message:
+        'Card number must contain only digits (spaces and dashes are allowed as separators).',
     };
   }
 
@@ -52,7 +56,7 @@ export function validateCard(rawInput: string): CardValidationResult {
     sanitizedNumber: sanitized,
     digitCount: length,
     message: luhnPassed
-      ? "Card number is valid."
-      : "Card number failed the Luhn checksum. This number could not have been issued by a card network.",
+      ? 'Card number is valid.'
+      : 'Card number failed the Luhn checksum. This number could not have been issued by a card network.',
   };
 }

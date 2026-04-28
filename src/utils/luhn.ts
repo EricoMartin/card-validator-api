@@ -19,7 +19,8 @@ export function isValidLuhn(digits: string): boolean {
 
   // Iterate right to left
   for (let i = digits.length - 1; i >= 0; i--) {
-    let digit = parseInt(digits[i]!, 10);
+    // Direct conversion: subtract ASCII '0' (48) to get digit value
+    let digit = digits.charCodeAt(i) - 48;
 
     if (shouldDouble) {
       digit *= 2;

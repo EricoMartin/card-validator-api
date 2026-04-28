@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
-import { validateCard } from "../services/card.service";
-import type { ValidateCardResponse } from "../types/card.types";
+import { Request, Response } from 'express';
+import { validateCard } from '../services/card.service';
+import type { ValidateCardResponse } from '../types/card.types';
 
 /**
  * POST /api/v1/cards/validate
@@ -19,11 +19,11 @@ export const validateCardEndpoint = (req: Request, res: Response): void => {
   const body = req.body as Record<string, unknown>;
 
   // Guard: body must exist and contain cardNumber
-  if (!body || !("cardNumber" in body)) {
+  if (!body || !('cardNumber' in body)) {
     const response: ValidateCardResponse = {
       success: false,
       error: {
-        code: "MISSING_FIELD",
+        code: 'MISSING_FIELD',
         message: "Request body must include a 'cardNumber' field.",
       },
     };
@@ -34,11 +34,11 @@ export const validateCardEndpoint = (req: Request, res: Response): void => {
   const { cardNumber } = body;
 
   // Guard: cardNumber must be a non-empty string
-  if (typeof cardNumber !== "string" || cardNumber.trim() === "") {
+  if (typeof cardNumber !== 'string' || cardNumber.trim() === '') {
     const response: ValidateCardResponse = {
       success: false,
       error: {
-        code: "INVALID_TYPE",
+        code: 'INVALID_TYPE',
         message: "'cardNumber' must be a non-empty string.",
       },
     };

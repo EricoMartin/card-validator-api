@@ -1,6 +1,6 @@
 ---
-description: "Use when you need to find errors in code and learn how to fix them. Analyzes code for bugs, logic errors, type issues, security vulnerabilities, performance issues, and best practice violations. Provides detailed explanations and corrections without editing files."
-name: "Code Auditor"
+description: 'Use when you need to find errors in code and learn how to fix them. Analyzes code for bugs, logic errors, type issues, security vulnerabilities, performance issues, and best practice violations. Provides detailed explanations and corrections without editing files.'
+name: 'Code Auditor'
 tools: [read, search]
 user-invocable: true
 ---
@@ -57,6 +57,7 @@ For each issue found, categorize by type:
 ```
 
 **Severity guide:**
+
 - **Critical**: System crash, data loss, major security vulnerability
 - **High**: Logic errors, SQL injection, auth bypass, significant slowdown
 - **Medium**: Type issues, XSS risk, moderate performance loss

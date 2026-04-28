@@ -3,30 +3,41 @@
 A REST API that validates payment card numbers using the Luhn algorithm, built with Express.js and TypeScript.
 
 ## Features
+
 - **Card Validation**: Validates card numbers and identifies card types (Visa, MasterCard, etc.).
 - **Structured Responses**: Always returns a JSON response with a `success` field for easy client handling.
 - **Error Handling**: Gracefully handles invalid input without conflating it with validation results.
 
 ## Endpoints
+
 ### POST `/api/v1/cards/validate`
+
 Validates a card number.
 
 ## Setup and Running
+
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 ```
+
 2. Install dependencies:
+
 ```bash
 npm install
 ```
+
 3. Start the server:
+
 ```bash
 npm start
 ```
+
 The server will run on `http://localhost:5000` by default.
 
 ## Testing
+
 To run tests, use:
 
 ```bash
@@ -34,6 +45,7 @@ npm test
 ```
 
 #### Request Body
+
 ```json
 {
   "cardNumber": "4111 1111 1111 1111"
@@ -44,6 +56,7 @@ npm test
 - Spaces and dashes are accepted as separators (e.g. `"4111-1111-1111-1111"`).
 
 #### Response — valid card
+
 ```json
 {
   "success": true,
@@ -55,12 +68,13 @@ npm test
   }
 }
 ```
+
 - `success`: Indicates if the request was processed successfully (true) or if there was an error (false).
 - `valid`: Indicates if the card number is valid according to the Luhn algorithm.
 - `cardType`: The type of card (e.g., "Visa", "MasterCard") or null if invalid.
 - `digitCount`: The number of digits in the card number.
 - `message`: A descriptive message about the validation result.
-**Response — invalid card (Luhn failure)**
+  **Response — invalid card (Luhn failure)**
 
 ```json
 {
@@ -88,12 +102,12 @@ npm test
 
 **HTTP Status Codes**
 
-| Status | Meaning |
-|--------|---------|
+| Status | Meaning                                                                |
+| ------ | ---------------------------------------------------------------------- |
 | `200`  | Request was well-formed. Check `data.valid` for the validation result. |
-| `400`  | Malformed request (missing or wrong-type `cardNumber`). |
-| `404`  | Unknown endpoint. |
-| `500`  | Unexpected server error. |
+| `400`  | Malformed request (missing or wrong-type `cardNumber`).                |
+| `404`  | Unknown endpoint.                                                      |
+| `500`  | Unexpected server error.                                               |
 
 ### `GET /api/v1/health`
 
@@ -113,7 +127,7 @@ Card numbers are sensitive data. Sending them in a GET query string would expose
 
 ### Why is a valid-but-failing card still a `200`?
 
-A `400` means the *request* was bad — the client did something wrong. A card failing the Luhn check is a *result*, not a client error. Returning `200` with `valid: false` lets clients reliably distinguish "you sent us garbage" (400) from "we processed your input and here's the answer" (200).
+A `400` means the _request_ was bad — the client did something wrong. A card failing the Luhn check is a _result_, not a client error. Returning `200` with `valid: false` lets clients reliably distinguish "you sent us garbage" (400) from "we processed your input and here's the answer" (200).
 
 ### Validation logic
 
@@ -123,7 +137,7 @@ A card number is considered **valid** when all three conditions hold:
 2. The digit count falls within the ISO/IEC 7812 range (12–19 digits).
 3. The digit string passes the **Luhn checksum** (mod-10 algorithm).
 
-Card *type* detection is informational. An unrecognised network prefix does not make a card invalid — new BIN ranges are issued regularly.
+Card _type_ detection is informational. An unrecognised network prefix does not make a card invalid — new BIN ranges are issued regularly.
 
 ### Why is `card.service.ts` separate from `card.controller.ts`?
 
@@ -169,10 +183,10 @@ The service contains pure business logic with no HTTP dependencies. The controll
 
 ## Test Cards (for manual testing)
 
-| Network          | Number               | Valid? |
-|------------------|----------------------|--------|
-| Visa             | 4111 1111 1111 1111  | ✅     |
-| Mastercard       | 5500 0055 5555 5559  | ✅     |
-| American Express | 3714 496353 98431    | ✅     |
-| Discover         | 6011 1111 1111 1117  | ✅     |
-| Invalid (Luhn)   | 4111 1111 1111 1112  | ❌     |
+| Network          | Number              | Valid? |
+| ---------------- | ------------------- | ------ |
+| Visa             | 4111 1111 1111 1111 | ✅     |
+| Mastercard       | 5500 0055 5555 5559 | ✅     |
+| American Express | 3714 496353 98431   | ✅     |
+| Discover         | 6011 1111 1111 1117 | ✅     |
+| Invalid (Luhn)   | 4111 1111 1111 1112 | ❌     |
