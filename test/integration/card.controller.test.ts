@@ -10,7 +10,7 @@ import app from '../../src/app';
  */
 
 describe('POST /api/v1/cards/validate', () => {
-  describe('happy path', () => {
+  describe('correct request path', () => {
     it('returns 200 and valid:true for a good Visa card', async () => {
       const res = await request(app)
         .post('/api/v1/cards/validate')

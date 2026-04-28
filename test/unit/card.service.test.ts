@@ -6,8 +6,8 @@ import { validateCard } from '../../src/services/card.service';
  * Unit tests for the card service layer.
  *
  * These tests are isolated from Express — no HTTP involved.
- * That's the point: if the Luhn logic is wrong, we want to know
- * exactly where it broke, not guess across the request lifecycle.
+ * if the Luhn logic is wrong, it shows
+ * exactly where it broke, not guessing across the request lifecycle.
  */
 
 describe('isValidLuhn()', () => {
@@ -45,7 +45,6 @@ describe('isValidLuhn()', () => {
   });
 
   it('correctly handles single digit 0 (edge: trivially passes Luhn)', () => {
-    // This illustrates why we have a separate length guard — Luhn alone isn't enough.
     expect(isValidLuhn('0')).toBe(true);
   });
 });
