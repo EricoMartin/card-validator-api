@@ -6,7 +6,9 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "dev": "ts-node --transpile-only src/server.ts",
-    "test": "jest --coverage"
+    "test": "jest --coverage --watchman=false",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write ."
   },
   "keywords": [
     "card-validation",

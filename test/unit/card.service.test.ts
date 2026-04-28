@@ -41,6 +41,7 @@ describe("isValidLuhn()", () => {
     it("fails for a random number", () => {
       expect(isValidLuhn("1234567890123456")).toBe(false);
     });
+    console.log(invalidNumbers[0]);
   });
 
   it("correctly handles single digit 0 (edge: trivially passes Luhn)", () => {
