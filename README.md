@@ -155,7 +155,7 @@ The service contains pure business logic with no HTTP dependencies. The controll
 
 ### `app.ts` vs `server.ts`
 
-`createApp()` in `app.ts` returns a configured Express instance without binding a port. `server.ts` imports it and calls `.listen()`. This pattern lets integration tests import `createApp()` and pass it to `supertest` without conflicting port bindings.
+`app.ts` returns a configured Express instance without binding a port. `server.ts` imports it and calls `.listen()`. This pattern lets integration tests import `app` and pass it to `supertest` without conflicting port bindings.
 
 ### Strict TypeScript
 
